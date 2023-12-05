@@ -31,21 +31,21 @@ function isSymmetric(root) {
 // Example usage:
 
 // Create a symmetric tree
-const symmetricTree = new TreeNode(1);
-symmetricTree.left = new TreeNode(2);
-symmetricTree.right = new TreeNode(2);
-symmetricTree.left.left = new TreeNode(3);
-symmetricTree.left.right = new TreeNode(4);
-symmetricTree.right.left = new TreeNode(4);
-symmetricTree.right.right = new TreeNode(3);
+const tree2 = new TreeNode(1);
+tree2.left = new TreeNode(2);
+tree2.right = new TreeNode(2);
+tree2.left.left = new TreeNode(3);
+tree2.left.right = new TreeNode(4);
+tree2.right.left = new TreeNode(4);
+tree2.right.right = new TreeNode(3);
 
-console.log(isSymmetric(symmetricTree)); // Output: true
+console.log(isSymmetric(tree2)); // Output: true
 
 // Create a non-symmetric tree
-const nonSymmetricTree = new TreeNode(1);
-nonSymmetricTree.left = new TreeNode(2);
-nonSymmetricTree.right = new TreeNode(2);
-nonSymmetricTree.left.right = new TreeNode(3);
-nonSymmetricTree.right.right = new TreeNode(3);
+const tree2 = new TreeNode(1);
+tree2.left = new TreeNode(2);
+tree2.right = new TreeNode(2);
+tree2.left.right = new TreeNode(3);
+tree2.right.right = new TreeNode(3);
 
-console.log(isSymmetric(nonSymmetricTree)); // Output: false
+console.log(isSymmetric(tree2)); // Output: false

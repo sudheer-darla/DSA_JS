@@ -1,22 +1,35 @@
-function sieve(A) {
-  let nums = new Array(A + 1).fill(0);
-  nums[0] = nums[1] = 1;
-  let ans = [];
+/**
+ * Sieve of Eratosthenes algorithm to find all primes up to A.
+ * @param {number} A - The upper limit to find prime numbers.
+ * @returns {number[]} - An array of prime numbers.
+ */
+function sieveOfEratosthenes(A) {
+  if (A < 2) {
+    return [];
+  }
+
+  const isComposite = Array.from({ length: A + 1 }, () => 0);
+  isComposite[0] = isComposite[1] = 1;
+  const primes = [];
 
   for (let i = 2; i * i <= A; i++) {
-    for (let j = i * 2; j <= A; j += i) {
-      nums[j] = 1;
+    if (!isComposite[i]) {
+      for (let j = i * i; j <= A; j += i) {
+        isComposite[j] = 1;
+      }
     }
   }
 
-  //   console.log(nums);
-
   for (let i = 0; i <= A; i++) {
-    if (!nums[i]) ans.push(i);
+    if (!isComposite[i]) {
+      primes.push(i);
+    }
   }
 
-  console.log(ans);
-  return ans;
+  return primes;
 }
 
-sieve(100);
+// Example usage:
+const A = 50;
+const result = sieveOfEratosthenes(A);
+console.log(result);

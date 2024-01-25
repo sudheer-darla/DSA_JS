@@ -119,3 +119,37 @@ Space Complexity:
 The space complexity is determined by the size of the dp array, which is (n1 + 1) x (n2 + 1).
 Therefore, the space complexity is O(n1 * n2).
 */
+
+// Same problem can be solved using Top-down approach as well
+var longestCommonSubsequence2 = function (text1, text2) {
+  const n1 = text1.length;
+  const n2 = text2.length;
+
+  // Create a memoization table to store computed results
+  const memo = Array.from({ length: n1 + 1 }, () => Array(n2 + 1).fill(-1));
+
+  const findLCS = (i, j) => {
+    // Base case
+    if (i === 0 || j === 0) {
+      return 0;
+    }
+
+    // Check if result is already memoized
+    if (memo[i][j] !== -1) {
+      return memo[i][j];
+    }
+
+    // If characters match, add 1 to LCS
+    if (text1[i - 1] === text2[j - 1]) {
+      memo[i][j] = 1 + findLCS(i - 1, j - 1);
+    } else {
+      // If characters do not match, consider both possibilities and take the maximum
+      memo[i][j] = Math.max(findLCS(i - 1, j), findLCS(i, j - 1));
+    }
+
+    return memo[i][j];
+  };
+
+  // Start the memoized recursion
+  return findLCS(n1, n2);
+};
